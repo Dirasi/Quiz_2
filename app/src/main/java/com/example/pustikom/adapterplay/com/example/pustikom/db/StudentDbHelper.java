@@ -45,18 +45,18 @@ public class StudentDbHelper extends SQLiteOpenHelper {
     }
 
     public void insertStudent(SQLiteDatabase db, Student student) {
-        SQLiteDatabase sdb = this.getWritableDatabase();
+        SQLiteDatabase wdb = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(StudentContract.COLUMN_NIM, student.getNoreg());
         values.put(StudentContract.COLUMN_NAME, student.getName());
         values.put(StudentContract.COLUMN_GENDER, student.getGender());
         values.put(StudentContract.COLUMN_EMAIL, student.getMail());
         values.put(StudentContract.COLUMN_PHONE, student.getPhone());
-        sdb.insert(StudentContract.TABLE_STUDENT, null, values);
+        wdb.insert(StudentContract.TABLE_STUDENT, null, values);
     }
 
     public void updateStudent(SQLiteDatabase db, Student student) {
-        SQLiteDatabase sdb = this.getWritableDatabase();
+        SQLiteDatabase wdb = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(StudentContract.COLUMN_NIM, student.getNoreg());
         values.put(StudentContract.COLUMN_NAME, student.getName());
@@ -65,12 +65,12 @@ public class StudentDbHelper extends SQLiteOpenHelper {
         values.put(StudentContract.COLUMN_PHONE, student.getPhone());
         String condition = StudentContract._ID + "= ?";
         String[] conditionArgs = {student.getId() + ""};
-        sdb.update(StudentContract.TABLE_STUDENT, values, condition, conditionArgs);
+        wdb.update(StudentContract.TABLE_STUDENT, values, condition, conditionArgs);
     }
 
     private void displayDatabaseInfo() {
         // Create and/or open a database to read from it
-        SQLiteDatabase db = StudentDbHelper.getReadableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
 
         // Define a projection that specifies which columns from the database
         // you will actually use after this query.
