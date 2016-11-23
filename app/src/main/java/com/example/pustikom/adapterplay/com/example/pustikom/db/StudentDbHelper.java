@@ -90,7 +90,7 @@ public class StudentDbHelper extends SQLiteOpenHelper {
                 null,                  // The values for the WHERE clause
                 null,                  // Don't group the rows
                 null,                  // Don't filter by row groups
-                null);                   // The sort order
+                null);                 // The sort order
 
         //TextView displayView = (TextView) findViewById(R.id.text_view_pet);
 
